@@ -1,5 +1,6 @@
-package com.example.racunapp2.Model;
+package com.example.racunapp2.Client;
 
+import com.example.racunapp2.Receipt.Receipt;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -7,7 +8,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-public class Kupac {
+public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -17,13 +18,13 @@ public class Kupac {
 
     @Column(nullable = false, length = 500)
     @JsonIgnore
-    private String lozinka;
+    private String password;
 
-    @OneToMany(mappedBy = "kupac", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "client", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
-    private List<Racun> racuni;
+    private List<Receipt> receipts;
 
-    public Kupac() {
+    public Client() {
     }
 
     public Integer getId() {
@@ -42,19 +43,19 @@ public class Kupac {
         this.email = email;
     }
 
-    public String getLozinka() {
-        return lozinka;
+    public String getPassword() {
+        return password;
     }
 
-    public void setLozinka(String lozinka) {
-        this.lozinka = lozinka;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public List<Racun> getRacuni() {
-        return racuni;
+    public List<Receipt> getReceipts() {
+        return receipts;
     }
 
-    public void setRacuni(List<Racun> racuni) {
-        this.racuni = racuni;
+    public void setReceipts(List<Receipt> receipts) {
+        this.receipts = receipts;
     }
 }

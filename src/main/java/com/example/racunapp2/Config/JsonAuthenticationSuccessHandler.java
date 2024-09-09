@@ -1,6 +1,5 @@
 package com.example.racunapp2.Config;
 
-import com.example.racunapp2.Model.LoggedInUser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

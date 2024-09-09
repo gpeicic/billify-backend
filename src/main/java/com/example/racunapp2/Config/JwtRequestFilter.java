@@ -1,6 +1,5 @@
 package com.example.racunapp2.Config;
 
-import com.example.racunapp2.Model.LoggedInUser;
 import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

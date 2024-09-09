@@ -1,6 +1,5 @@
 package com.example.racunapp2.Config;
 
-import com.example.racunapp2.Model.LoggedInUser;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

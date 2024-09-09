@@ -1,4 +1,4 @@
-package com.example.racunapp2.Model;
+package com.example.racunapp2.Config;
 
 import org.springframework.security.core.CredentialsContainer;
 import org.springframework.security.core.GrantedAuthority;

@@ -1,4 +1,4 @@
-package com.example.racunapp2.Service;
+package com.example.racunapp2.Config;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;

@@ -1,4 +1,4 @@
-package com.example.racunapp2.Model;
+package com.example.racunapp2.Config;
 
 public class LoginResponse {
     private String token;
