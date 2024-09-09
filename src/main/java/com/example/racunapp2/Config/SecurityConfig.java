@@ -39,7 +39,7 @@ public class SecurityConfig {
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.POST, "/google/googleLogin", "/clients/register", "/clients/login", "/clients/check").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/clients/check").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/clients/register","/clients/check").permitAll()
                         .requestMatchers(HttpMethod.GET, "/clients/accounts").authenticated()
                         .requestMatchers(HttpMethod.POST, "/clients/accounts").authenticated()
                         .anyRequest().authenticated() // Secure all other requests
