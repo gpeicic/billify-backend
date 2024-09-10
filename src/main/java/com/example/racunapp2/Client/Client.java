@@ -24,6 +24,12 @@ public class Client {
     @JsonManagedReference
     private List<Receipt> receipts;
 
+    public Client(Integer id, String email, String password) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+    }
+
     public Client() {
     }
 

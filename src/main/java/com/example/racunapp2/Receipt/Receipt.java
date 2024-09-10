@@ -64,6 +64,14 @@ public class Receipt {
         return totalPrice;
     }
 
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
     public int getId() {
         return id;
     }
