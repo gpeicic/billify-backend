@@ -26,8 +26,10 @@ import org.springframework.test.web.servlet.MvcResult;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import java.math.BigDecimal;
@@ -48,15 +50,17 @@ class ClientControllerTest {
     @MockBean
     ReceiptRepository receiptRepository;
     @Test
-    void whenGetClientRegisterClient() {
+    void whenGetClientRegisterClient() throws Exception {
         Client client = new Client(1, "client@email.com", "password");
 
-        Client savedClient = clientService.saveClient(client);
+        when(clientService.saveClient(any(Client.class))).thenReturn(client);
 
+        mockMvc.perform(post("/clients/register")  // Use POST here
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"id\":1,\"email\":\"client@email.com\",\"password\":\"password\"}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.email").value(client.getEmail()));
 
-        assertNotNull(savedClient);
-        assertEquals(savedClient.getEmail(), client.getEmail());
-        assertEquals(savedClient.getPassword(), client.getPassword());
     }
 
     @Test
