@@ -44,14 +44,4 @@ public class ClientController {
         return clientService.checkEmailAvailability(email);
     }
 
-    @GetMapping("/{id}/racuni")
-    public ResponseEntity<List<Receipt>> getReceiptsFromClient(@PathVariable Integer id) {
-        Optional<Client> client = clientService.findById(id);
-        if (client.isPresent()) {
-            List<Receipt> receipts = client.get().getReceipts();
-            return ResponseEntity.ok(receipts);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
 }

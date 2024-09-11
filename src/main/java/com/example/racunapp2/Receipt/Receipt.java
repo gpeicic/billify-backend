@@ -48,6 +48,15 @@ public class Receipt {
     public Receipt() {
     }
 
+    public Receipt(Integer id, Store store, Client client, Date date, List<ItemReceipt> boughtItems, BigDecimal totalPrice) {
+        this.id = id;
+        this.store = store;
+        this.client = client;
+        this.date = date;
+        this.boughtItems = boughtItems;
+        this.totalPrice = totalPrice;
+    }
+
     public BigDecimal getTotalPrice() {
         return totalPrice;
     }
