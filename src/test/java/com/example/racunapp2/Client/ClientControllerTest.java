@@ -1,9 +1,7 @@
 package com.example.racunapp2.Client;
 
-import com.example.racunapp2.Client.Client;
-import com.example.racunapp2.Client.ClientService;
 import com.example.racunapp2.Item.Item;
-import com.example.racunapp2.Receipt.ItemReceipt;
+
 import com.example.racunapp2.Receipt.Receipt;
 import com.example.racunapp2.Receipt.ReceiptRepository;
 import com.example.racunapp2.Store.Store;
@@ -13,18 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.query.FluentQuery;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-
-import static org.hamcrest.Matchers.hasSize;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -34,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.math.BigDecimal;
 import java.util.*;
-import java.util.function.Function;
+
 @WebMvcTest(ClientController.class)
 @AutoConfigureMockMvc(addFilters = false)
 class ClientControllerTest {
