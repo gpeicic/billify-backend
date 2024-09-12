@@ -2,9 +2,13 @@ package com.example.racunapp2.Client;
 
 import com.example.racunapp2.Receipt.Receipt;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -13,11 +17,14 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+
     @Column(unique = true, nullable = false, length = 500)
+    @Email(message = "Email should be valid")
+    @NotEmpty(message = "Email is required")
+    @Size(max = 500, message = "Email should not be more than 500 characters")
     private String email;
 
     @Column(nullable = false, length = 500)
-    @JsonIgnore
     private String password;
 
     @OneToMany(mappedBy = "client", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)

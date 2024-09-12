@@ -3,6 +3,7 @@ package com.example.racunapp2.Client;
 import com.example.racunapp2.Receipt.Receipt;
 import com.example.racunapp2.Receipt.ReceiptRepository;
 import com.example.racunapp2.Config.GoogleTokenService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,9 +23,15 @@ public class ClientController {
         this.receiptRepository = receiptRepository;
     }
     @PostMapping("/register")
-    public ResponseEntity<Client> registerClient(@RequestBody Client client) {
-        //   kupac.setLozinka(passwordEncoder.encode(kupac.getLozinka()));
-        return ResponseEntity.ok(clientService.saveClient(client));
+    public ResponseEntity<String> registerClient(@RequestBody Client client) {
+        try {
+            clientService.saveClient(client);
+            return ResponseEntity.ok("Registration successful!");
+        } catch (EmailAlreadyExistsException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body("Invalid request: " + e.getMessage());
+        }
 
     }
 

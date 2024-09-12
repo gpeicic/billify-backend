@@ -25,9 +25,9 @@ public class JsonAuthenticationSuccessHandler implements AuthenticationSuccessHa
         LoggedInUser user = (LoggedInUser) authentication.getPrincipal();
         String jsonResponse = objectMapper.writeValueAsString(user);
 
-        // Generate JWT token
+
         String token = JwtUtil.generateToken(user.getId(), user.getEmail());
-        // Dodaj token u header
+
         response.setHeader("Authorization", "Bearer " + token);
 
         response.getWriter().write(jsonResponse);

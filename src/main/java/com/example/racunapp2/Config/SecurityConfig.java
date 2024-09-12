@@ -13,7 +13,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
@@ -38,11 +37,11 @@ public class SecurityConfig {
                 .cors().and()
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(HttpMethod.POST, "/google/googleLogin", "/clients/register", "/clients/login", "/clients/check").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/clients/register","/clients/check").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/google/googleLogin", "/clients/register", "/clients/login").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/clients/check").permitAll()
                         .requestMatchers(HttpMethod.GET, "/clients/accounts").authenticated()
                         .requestMatchers(HttpMethod.POST, "/clients/accounts").authenticated()
-                        .anyRequest().authenticated() // Secure all other requests
+                        .anyRequest().authenticated()
                 )
                 //TODO implement oauth2
                 /*.oauth2Login(oauth2 -> oauth2

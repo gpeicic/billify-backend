@@ -41,7 +41,7 @@ CREATE TABLE itemreceipt (
                                  FOREIGN KEY (item_id) REFERENCES item(id)
 );
 
--- Unos podataka u tablice
+
 INSERT INTO item (serialnumber, itemname, price) VALUES
                                                      ('SN123456789', 'Laptop', 999.99),
                                                      ('SN987654321', 'Smartphone', 499.99),

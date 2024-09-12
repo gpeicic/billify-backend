@@ -18,22 +18,22 @@ public class CustomUsernamePasswordAuthenticationFilter extends UsernamePassword
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         if (request.getContentType().equals("application/json")) {
             try {
-                // Parse the JSON request body
+
                 Map<String, String> loginRequest = objectMapper.readValue(request.getInputStream(), Map.class);
                 String username = loginRequest.get("email");
                 String password = loginRequest.get("password");
 
-                // Create an authentication token
+
                 UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(username, password);
 
-                // Allow Spring Security to authenticate the token
+
                 return this.getAuthenticationManager().authenticate(authRequest);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        // Fallback to default behavior if not JSON
+
         return super.attemptAuthentication(request, response);
     }
 }
