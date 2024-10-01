@@ -45,6 +45,17 @@ public class ClientController {
             return ResponseEntity.notFound().build();
         }
     }
+    @GetMapping("/{id}/email")
+    public ResponseEntity<String> getEmailById(@PathVariable Integer id) {
+        Optional<Client> client = clientService.findById(id);
+
+        if (client.isPresent()) {
+            return ResponseEntity.ok(client.get().getEmail());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 
     @GetMapping("/check")
     public boolean checkEmail(@RequestParam String email) {

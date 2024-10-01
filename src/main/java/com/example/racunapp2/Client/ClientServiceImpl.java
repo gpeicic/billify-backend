@@ -13,6 +13,7 @@ public class ClientServiceImpl implements ClientService {
         this.clientRepository = clientRepository;
     }
 
+
     public Optional<Client> findByEmail(String email) {
         return clientRepository.findByEmail(email);
     }

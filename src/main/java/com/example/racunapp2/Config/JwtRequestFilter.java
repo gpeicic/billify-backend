@@ -16,7 +16,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
         String path = request.getServletPath();
-        if ("/clients/register".equals(path)|| "/clients/login".equals(path) || "/clients/check".equals(path)) {
+        if ("/clients/register".equals(path)|| "/clients/login".equals(path) || "/clients/check".equals(path) || path.matches("/clients/\\d+/email")) {
             chain.doFilter(request, response);
             return;
         }
