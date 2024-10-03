@@ -45,9 +45,9 @@ public class SecurityConfig {
                 )
                 //TODO implement oauth2
                 /*.oauth2Login(oauth2 -> oauth2
-                        .loginPage("/google/googleLogin") // Custom login URL
-                        .defaultSuccessUrl("/accounts", true) // Redirect to /accounts on success
-                        .successHandler(new SimpleUrlAuthenticationSuccessHandler("/accounts")) // Custom success handler
+                        .loginPage("/google/googleLogin")
+                        .defaultSuccessUrl("/accounts", true)
+                        .successHandler(new SimpleUrlAuthenticationSuccessHandler("/accounts"))
                 )
                 //    .addFilterBefore(new JwtRequestFilter(jwtUtil), UsernamePasswordAuthenticationFilter.class)
 

@@ -19,7 +19,6 @@ public class ClientServiceImpl implements ClientService {
     }
 
     public Client saveClient(Client client) {
-        // Check email validity before saving
         if (!isValidEmail(client.getEmail())) {
             throw new IllegalArgumentException("Invalid email address");
         }
